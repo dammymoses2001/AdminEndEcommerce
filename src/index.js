@@ -26,17 +26,24 @@ import "./assets/sass/light-bootstrap-dashboard-react.scss?v=1.3.0";
 import "./assets/css/demo.css";
 import "./assets/css/pe-icon-7-stroke.css";
 
-import AdminLayout from "layouts/Admin.jsx";
+//import AdminLayout from "layouts/Admin.jsx";
 import ProtectedRoute from './protectedRoute'
 import Login from 'views/Login'
+//import Dashboard from './views/Dashboard'
+
+import Routes from './routes'
+
+// if (true) {
+
+// }
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-      {/* <Redirect from="/admin" to="/admin/dashboard" /> */}
       <Route exact path="/login" component={Login} />
-      <ProtectedRoute path="/admin" component={AdminLayout} />
-
+      {Routes.map((prop, key) => (
+        <ProtectedRoute exact key={key} path={prop.path} component={prop.component} />
+      ))}
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")

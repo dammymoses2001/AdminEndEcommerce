@@ -19,7 +19,8 @@
 .top{
   padding:10px 5px ;
   width: calc(100%  );
-  
+  display:flex;
+  justify-content: space-between;
 }
 .fixed-plugin .button-container .github-btn{
     display: inline-block;
@@ -357,9 +358,7 @@
       display: flex;
       justify-content: space-between;
     }
-    .top{
-      padding:50px auto;
-    }
+    
 
 }
 

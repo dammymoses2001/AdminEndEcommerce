@@ -22,26 +22,39 @@ import Typography from "views/Typography.jsx"
 import Icons from "views/Icons.jsx";
 import Login from 'views/Login';
 import Products from 'views/Products'
+import Customer from 'views/Customer'
+import Home from 'views/Home'
 //import Maps from "views/Maps.jsx";
 import Notifications from "views/Notifications.jsx";
 //import Upgrade from "views/Upgrade.jsx";
+import ProtectedRoutes from './protectedRoute'
+import { Route } from 'react-router-dom'
 
 const dashboardRoutes = [
+  // {
+  //   path: "/login",
+  //   name: "Login",
+  //   show: false,
+  //   icon: "pe-7s-graph",
+  //   component: Login,
+  //   layout: "/admin"
+  // },
+  // {
+  //   path: "/",
+  //   name: "Home",
+  //   show: true,
+  //   icon: "pe-7s-graph",
+  //   component: Home,
+  //   layout: "/"
+  // },
   {
-    path: "/login",
-    name: "Login",
-    show: false,
-    icon: "pe-7s-graph",
-    component: Login,
-    layout: "/admin"
-  },
-  {
-    path: "/dashboard",
+    path: "/",
     name: "Dashboard",
     show: true,
     icon: "pe-7s-graph",
     component: Dashboard,
-    layout: "/admin"
+    //   layout: "/admin",
+    route: ProtectedRoutes
   },
   {
     path: "/products",
@@ -49,15 +62,17 @@ const dashboardRoutes = [
     show: true,
     icon: "pe-7s-note2",
     component: Products,
-    layout: "/admin"
+    //   layout: "/admin",
+    route: ProtectedRoutes
   },
   {
     path: "/customers",
     name: "Customers",
     show: true,
     icon: "pe-7s-users",
-    component: Products,
-    layout: "/admin"
+    component: Customer,
+    //   layout: "/admin",
+    route: ProtectedRoutes
   },
   {
     path: "/category",
@@ -65,7 +80,8 @@ const dashboardRoutes = [
     show: true,
     icon: "pe-7s-folder",
     component: Products,
-    layout: "/admin"
+    //   layout: "/admin",
+    route: ProtectedRoutes
   },
   {
     path: "/sale-history",
@@ -73,7 +89,8 @@ const dashboardRoutes = [
     show: true,
     icon: "pe-7s-cash",
     component: Products,
-    layout: "/admin"
+    //   layout: "/admin",
+    route: ProtectedRoutes
   },
   {
     path: "/order",
@@ -81,7 +98,8 @@ const dashboardRoutes = [
     show: true,
     icon: "pe-7s-albums",
     component: Products,
-    layout: "/admin"
+    //   layout: "/admin",
+    route: ProtectedRoutes
   },
   {
     path: "/user",
@@ -89,7 +107,8 @@ const dashboardRoutes = [
     show: true,
     icon: "pe-7s-user",
     component: UserProfile,
-    layout: "/admin"
+    //   layout: "/admin",
+    route: ProtectedRoutes
   },
   {
     path: "/table",
@@ -97,7 +116,8 @@ const dashboardRoutes = [
     show: false,
     icon: "pe-7s-note2",
     component: TableList,
-    layout: "/admin"
+    //   layout: "/admin",
+    route: ProtectedRoutes
   },
   {
     path: "/typography",
@@ -105,7 +125,8 @@ const dashboardRoutes = [
     show: true,
     icon: "pe-7s-news-paper",
     component: Typography,
-    layout: "/admin"
+    //   layout: "/admin",
+    route: ProtectedRoutes
   },
 
   {
@@ -114,7 +135,8 @@ const dashboardRoutes = [
     show: true,
     icon: "pe-7s-bell",
     component: Icons,
-    layout: "/admin"
+    //   layout: "/admin",
+    route: ProtectedRoutes
   },
 
   {
@@ -122,7 +144,8 @@ const dashboardRoutes = [
     name: "Notifications",
     icon: "pe-7s-bell",
     component: Notifications,
-    layout: "/admin"
+    //   layout: "/admin",
+    route: ProtectedRoutes
   },
   // {
   //   upgrade: true,

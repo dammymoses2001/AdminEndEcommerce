@@ -17,10 +17,13 @@
 */
 import React, { useState } from 'react';
 import { Grid, Row, Col, Table, Button } from 'react-bootstrap';
+import { Form } from 'reactstrap'
 
 import Card from 'components/Card/Card.jsx';
 import Card1 from 'components/Card/Card1.jsx'
 import Modal from 'components/Modal/Modal.jsx'
+import Input from 'components/Input/Input'
+
 import {
   thArray,
   tdArray,
@@ -30,6 +33,7 @@ import {
 import Image1 from '../assets/img/productImage/img-1.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import Layout from '../layouts/Admin.jsx'
 
 export default function Products() {
   const [show, setShow] = useState(false);
@@ -40,79 +44,107 @@ export default function Products() {
   const handleModal = () => {
     handleShow()
   }
+
+
+  const displayProduct = () => {
+    return <Form>
+      <Input
+        className="form-group"
+        label='Product Name'
+        type='text'
+        placeholder='Enter your product name here'
+      />
+
+      <Input
+        className="form-group"
+        label='Product Price'
+        type='number'
+        placeholder='Enter your product price here'
+      />
+
+      <Input
+        className="form-group"
+        label='Product Image'
+        type='file'
+        placeholder='Enter your product price here'
+      />
+    </Form>
+  }
   return (
-    <div className='content'>
-      <Grid fluid>
-        <Row>
-          <Col md={12}>
-            <Card1
+    <Layout>
+      <div className='content'>
+        <Grid fluid>
+          <Row>
+            <Col md={12}>
+              <Card1
 
-              context={
-                <div className="justify-content-between top">
-                  <span>Search for Product Here</span>
-                  <Button bsStyle='primary' size='sm' onClick={handleModal}>Add Product</Button>
-                </div>
-              }
-            />
+                context={
+                  <div className="top">
+                    <span>Search for Product Here</span>
+                    <Button bsStyle='primary' size='sm' onClick={handleModal}>Add Product</Button>
+                  </div>
+                }
+              />
 
-            <Modal
-              show={show}
-              onHide={handleClose}
-              onClick={handleClose}
-              title='Add new Product'
-            >
-              hello
-            </Modal>
-          </Col>
-          <Col md={12}>
-            <Card
-              title='All Product'
-              category='Here is a subtitle for this table'
-              ctTableFullWidth
-              ctTableResponsive
-              content={
-                <Table striped hover>
-                  <thead>
-                    <tr>
-                      {productItem.map((prop, key) => {
-                        return <th key={key}>{prop}</th>;
-                      })}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {products.map((prop, key) => (
-                      <tr key={key}>
-                        <td>{prop.id}</td>
-                        <td>{prop.price}</td>
-                        <td>{prop.name}</td>
-                        <td>{prop.quality}</td>
-                        <td>
-                          <img
-                            src={Image1}
-                            alt=''
-                            style={{
-                              Width: '30px',
-                              height: '30px',
-                              objectFit: 'contain',
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <Button bsStyle='primary'>Edit</Button>
-                        </td>
-                        <td>
-                          <Button bsStyle='danger'>Delete</Button>
-                        </td>
+              <Modal
+                show={show}
+                onHide={handleClose}
+                onClick={handleClose}
+                title='Add new Product'
+              >
+                {displayProduct()}
+              </Modal>
+            </Col>
+            <Col md={12}>
+              <Card
+                title='All Product'
+                category='Here is a subtitle for this table'
+                ctTableFullWidth
+                ctTableResponsive
+                content={
+                  <Table striped hover>
+                    <thead>
+                      <tr>
+                        {productItem.map((prop, key) => {
+                          return <th key={key}>{prop}</th>;
+                        })}
                       </tr>
-                    ))}
-                  </tbody>
-                </Table>
-              }
-            />
-          </Col>
-        </Row>
-      </Grid>
-    </div>
+                    </thead>
+                    <tbody>
+                      {products.map((prop, key) => (
+                        <tr key={key}>
+                          <td>{prop.id}</td>
+                          <td>{prop.price}</td>
+                          <td>{prop.name}</td>
+                          <td>{prop.quality}</td>
+                          <td>
+                            <img
+                              src={Image1}
+                              alt=''
+                              style={{
+                                Width: '30px',
+                                height: '30px',
+                                objectFit: 'contain',
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <Button bsStyle='primary'>Edit</Button>
+                          </td>
+                          <td>
+                            <Button bsStyle='danger'>Delete</Button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                }
+              />
+            </Col>
+          </Row>
+        </Grid>
+      </div>
+    </Layout>
   );
 }
 

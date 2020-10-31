@@ -16,11 +16,12 @@
 
 */
 import React, { Component } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, withRouter } from 'react-router-dom';
 import { Card } from 'reactstrap';
 import { Accordion, Button } from 'react-bootstrap';
 
 import AdminNavbarLinks from '../Navbars/AdminNavbarLinks.jsx';
+import routes from '../../routes'
 
 import logo from 'assets/img/reactlogo.png';
 
@@ -60,36 +61,31 @@ class Sidebar extends Component {
             <div className='logo-img'>
               <img src={logo} alt='logo_image' />
             </div>
-            {/* </a> */}
+
           </Link>
 
           <Link to='/admin' className='simple-text logo-normal'>
             Ecommerce Admin
           </Link>
-          {/* <a
-            href="/admin"
-            className="simple-text logo-normal"
-          >
-            Ecommerce Admin
-          </a> */}
+
         </div>
         <div className='sidebar-wrapper'>
           <ul className='nav'>
             {this.state.width <= 991 ? <AdminNavbarLinks /> : null}
-            {this.props.routes.map((prop, key) => {
+            {routes.map((prop, key) => {
               if (!prop.redirect)
                 return (
                   <li
                     className={
                       prop.upgrade
                         ? 'active active-pro'
-                        : this.activeRoute(prop.layout + prop.path)
+                        : this.activeRoute(prop.path)
                     }
                     key={key}
                   >
                     {!prop.parent && prop.show ? (
                       <NavLink
-                        to={prop.layout + prop.path}
+                        to={prop.path}
                         className='nav-link'
                         activeClassName='active'
                       >
@@ -108,4 +104,4 @@ class Sidebar extends Component {
   }
 }
 
-export default Sidebar;
+export default withRouter(Sidebar);

@@ -16,7 +16,7 @@
 
 */
 import React, { Component } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch, withRouter } from "react-router-dom";
 import NotificationSystem from "react-notification-system";
 
 import AdminNavbar from "components/Navbars/AdminNavbar";
@@ -76,7 +76,7 @@ class Admin extends Component {
   };
   getRoutes = routes => {
     return routes.map((prop, key) => {
-      /// console.log(prop.layout, prop.path)
+      console.log(prop.layout, prop.path)
       if (prop.layout === "/admin") {
         return (
           <Route
@@ -190,16 +190,13 @@ class Admin extends Component {
     return (
       <div className="wrapper">
         {/* <NotificationSystem ref="notificationSystem" style={style} /> */}
-
-        <Sidebar {...this.props} routes={routes} image={this.state.image}
-          color={this.state.color}
-          hasImage={this.state.hasImage} />
+        <Sidebar />
         <div id="main-panel" className="main-panel" ref="mainPanel">
           <AdminNavbar
             {...this.props}
             brandText={this.getBrandText(this.props.location.pathname)}
           />
-          <Switch>{this.getRoutes(routes)}</Switch>
+          {this.props.children}
           {/* <Footer /> */}
           {/* <FixedPlugin
             handleImageClick={this.handleImageClick}
@@ -217,4 +214,4 @@ class Admin extends Component {
   }
 }
 
-export default Admin;
+export default withRouter(Admin);

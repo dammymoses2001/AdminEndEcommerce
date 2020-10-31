@@ -23,12 +23,19 @@
 // //
 //
 
-var productItem =["ID","Name","Price","Quality","Images"]
+var productItem = ["ID", "Name", "Price", "Quality", "Images"]
 var products = [
-  {id:1,name:'Shoe', price:100, quality:30},
-  {id:2,name:'cloth', price:200, quality:60, },
-  {id:3,name:'Cap', price:300, quality:300 },
-  {id:4,name:'unknown', price:400, quality:100}
+  { id: 1, name: 'Shoe', price: 100, quality: 30 },
+  { id: 2, name: 'cloth', price: 200, quality: 60, },
+  { id: 3, name: 'Cap', price: 300, quality: 300 },
+  { id: 4, name: 'unknown', price: 400, quality: 100 }
+];
+var customers = ["ID", "Name", "Datejoined"]
+var customersDetails = [
+  { id: 1, name: 'Dammy moses', datejoined: '10/12/20' },
+  { id: 2, name: 'Joe Doe', datejoined: '11/01/20' },
+  { id: 3, name: 'Chris Evans', datejoined: '1/01/20' },
+  { id: 4, name: 'Jennifer Hudson', datejoined: '05/02/19' },
 ]
 var defaultWidth =
   window.screen.width > 768
@@ -550,7 +557,7 @@ var responsiveSales = [
     "screen and (max-width: 640px)",
     {
       axisX: {
-        labelInterpolationFnc: function(value) {
+        labelInterpolationFnc: function (value) {
           return value[0];
         }
       }
@@ -596,7 +603,7 @@ var responsiveBar = [
     {
       seriesBarDistance: 5,
       axisX: {
-        labelInterpolationFnc: function(value) {
+        labelInterpolationFnc: function (value) {
           return value[0];
         }
       }
@@ -615,6 +622,8 @@ module.exports = {
   iconsArray, // For icons (Icons view)
   products,
   productItem,
+  customers,
+  customersDetails,
   dataPie,
   legendPie,
   dataSales,
